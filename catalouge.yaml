@@ -21,9 +21,9 @@
      path: /app
     register: directory
   - name: Create a directory app
-    when: 'directory.stat.exits' == false
+    when: directory.stat.exists == False
     ansible.builtin.file:
-     path: app
+     path: /app
      state: directory     
   - name: extract catalogue.zip
     ansible.builtin.unarchive:
