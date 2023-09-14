@@ -15,7 +15,15 @@
   - name: Add the user 'roboshop' after validating
     when: out.rc == 1
     ansible.builtin.user:
-     name: roboshop   
+     name: roboshop  
+  - name: Recursively remove directory
+    ansible.builtin.file:
+     path: app
+     state: absent
+  - name: Create a directory app
+    ansible.builtin.file:
+     path: app
+     state: directory      
  
 
 
