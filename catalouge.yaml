@@ -3,8 +3,7 @@
   become: yes
   tasks:
   - name: Run nodejs script
-    ansible.builtin.script: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
-     remote_src: yes
+    ansible.builtin.command: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
   - name: installing nodejs
     ansible.builtin.yum:
      name: nodejs
