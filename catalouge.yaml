@@ -38,8 +38,7 @@
     ansible.builtin.command: npm install
   - name: Reload catalogue
     ansible.builtin.systemd:
-    name: catalogue
-    state: reloaded  
+     daemon_reload: true  
   - name: Start service catalogue and enable
     ansible.builtin.service:
      name: catalogue
