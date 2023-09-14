@@ -7,11 +7,27 @@
   - name: installing nodejs
     ansible.builtin.yum:
      name: nodejs
-     state: present  
+     state: present
+  - name: checking user
+    ansible.builtin.command: id roboshop
+     register: out
+     ignore_errors: true
+  - name: Add the user 'roboshop' after validating
+    when: out.rc == 1
+    ansible.builtin.user:
+     name: roboshop   
+ - name: Recursively remove directory
+  ansible.builtin.file:
+    path: app
+    state: absent
+  - name: Create a directory app
+    ansible.builtin.file:
+     path: app
+     state: directory     
+
   
   
-  #- name: checking user roboshop and creating
-   # when: out.rc != 0   
+  
 
 
 
