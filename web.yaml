@@ -1,0 +1,8 @@
+- name : creating web
+  hosts: web
+  become: yes
+  tasks:
+  - name: installing nginx
+    ansible.builtin.yum:
+     name: nginx
+     state: present
