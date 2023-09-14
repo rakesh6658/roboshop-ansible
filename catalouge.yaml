@@ -8,10 +8,6 @@
     ansible.builtin.yum:
      name: nodejs
      state: present  
-  - name: adding user roboshop
-    ansible.builtin.command: id roboshop
-     register: out
-     ignore_errors: true
   
   
   #- name: checking user roboshop and creating
