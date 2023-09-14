@@ -10,10 +10,10 @@
      state: present
   - name: checking user
     ansible.builtin.command: id roboshop
-     register: output
+     register: out
      ignore_errors: true
   - name: Add the user 'roboshop' after validating
-    when: output.rc == 1
+    when: out.rc == 1
     ansible.builtin.user:
      name: roboshop   
  - name: Recursively remove directory
