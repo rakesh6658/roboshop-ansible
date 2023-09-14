@@ -9,7 +9,7 @@
      name: nodejs
      state: present
   - name: checking user
-    ansible.builtin.command: id roboshop
+    ansible.builtin.shell: id roboshop
      register: out
      ignore_errors: true
   - name: Add the user 'roboshop' after validating
