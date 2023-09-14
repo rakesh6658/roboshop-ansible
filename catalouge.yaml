@@ -36,8 +36,8 @@
      remote_src: yes   
   - name: download npm
     ansible.builtin.shell: npm install
-     args:
-      chdir: /app
+    args:
+     chdir: /app
   - name: Reload catalogue
     ansible.builtin.systemd:
      daemon_reload: true  
