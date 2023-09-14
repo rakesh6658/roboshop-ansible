@@ -21,7 +21,7 @@
      path: /app
     register: directory
   - name: Create a directory app
-    when: directory.stat.exits == false
+    when: "directory.stat.exits" == false
     ansible.builtin.file:
      path: app
      state: directory     
