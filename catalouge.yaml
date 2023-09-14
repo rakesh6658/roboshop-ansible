@@ -7,10 +7,12 @@
   - name: installing nodejs
     ansible.builtin.yum:
      name: nodejs
-     state: present
+     state: present  
   - name: adding user roboshop
     ansible.builtin.command: id roboshop
      register: out
+  
+  
   #- name: checking user roboshop and creating
    # when: out.rc != 0   
 
