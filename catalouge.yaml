@@ -33,7 +33,30 @@
     ansible.builtin.unarchive:
      src: /tmp/catalogue.zip
      dest: /tmp
-     remote_src: yes      
+     remote_src: yes   
+  - name: download npm
+    ansible.builtin.command: npm install
+  - name: Reload catalogue
+    ansible.builtin.systemd:
+    name: catalogue
+    state: reloaded  
+  - name: Start service catalogue and enable
+    ansible.builtin.service:
+     name: catalogue
+     state: started
+     enabled: yes  
+  - name: Copying mongo.repo
+    ansible.builtin.copy:
+     src: mongo.repo
+     dest: /etc/yum.repos.d/mongo.repo   
+  - name: installing mongo-org-shell
+    ansible.builtin.yum:
+     name: mongodb-org-shell
+     state: present   
+  - name: download npm
+    ansible.builtin.command: mongo --host 34.207.228.178 < /app/schema/catalogue.js    
+
+
   
           
  
