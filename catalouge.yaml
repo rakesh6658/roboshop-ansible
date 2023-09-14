@@ -23,7 +23,12 @@
   - name: Create a directory app
     ansible.builtin.file:
      path: app
-     state: directory      
+     state: directory
+  - name: Download catalogue.zip
+    ansible.builtin.get_url:
+     url: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+     dest: /tmp/catalogue.zip    
+     args: app     
  
 
 
