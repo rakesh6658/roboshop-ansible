@@ -1,0 +1,19 @@
+- name: creating catalouge
+  hosts: catalogue
+  become: yes
+  tasks:
+  - name: Run nodejs script
+    ansible.builtin.script: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  - name: installing nodejs
+    ansible.builtin.yum:
+     name: nodejs
+     state: present
+  - name: adding user roboshop
+    ansible.builtin.command: id roboshop
+     register: out
+  #- name: checking user roboshop and creating
+   # when: out.rc != 0   
+
+
+
+
