@@ -9,7 +9,7 @@
      name: nodejs
      state: present
   - name: checking user
-    ansible.builtin.shell: id roboshop
+    ansible.builtin.command: id roboshop
      register: out
      ignore_errors: true
   - name: Add the user 'roboshop' after validating
@@ -17,7 +17,7 @@
     ansible.builtin.user:
      name: roboshop   
  - name: Recursively remove directory
-  ansible.builtin.file:
+   ansible.builtin.file:
     path: app
     state: absent
   - name: Create a directory app
