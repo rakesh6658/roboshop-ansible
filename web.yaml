@@ -1,4 +1,4 @@
-- name : creating web
+- name: creating web
   hosts: web
   become: yes
   tasks:
