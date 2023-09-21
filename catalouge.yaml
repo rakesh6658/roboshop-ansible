@@ -35,7 +35,7 @@
      dest: /tmp
      remote_src: yes   
   - name: download npm
-    ansible.builtin.command: npm install
+    ansible.builtin.command: npm install 
     args:
      chdir: /app
   - name: Reload catalogue
@@ -54,8 +54,8 @@
     ansible.builtin.yum:
      name: mongodb-org-shell
      state: present   
-  - name: download npm
-    ansible.builtin.command: mongo --host 34.207.228.178 < /app/schema/catalogue.js    
+  - name: loading schema
+    ansible.builtin.command: mongo --host 18.234.29.95 < /app/schema/catalogue.js    
 
 
   
