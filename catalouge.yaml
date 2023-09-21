@@ -29,25 +29,24 @@
     ansible.builtin.get_url:
      url: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
      dest: /tmp 
-  - name: change directory
-    ansible.builtin.command: cd /app         
+          
   - name: extract catalogue.zip
     ansible.builtin.unarchive:
      src: /tmp/catalogue.zip
-     dest: /tmp
+     dest: /app
      remote_src: yes   
   - name: download npm
-    ansible.builtin.shell: npm install 
+    ansible.builtin.command: npm install 
     args:
      chdir: /app
+  - name: copy catalogue service
+    ansible.builtin.copy:
+      src: catalogue.service
+      dest: /etc/systemd/system/catalogue.service   
   - name: Reload catalogue
     ansible.builtin.systemd:
      daemon_reload: true  
-  - name: Start service catalogue and enable
-    ansible.builtin.service:
-     name: catalogue
-     state: started
-     enabled: yes  
+  
   - name: Copying mongo.repo
     ansible.builtin.copy:
      src: mongo.repo
@@ -57,7 +56,12 @@
      name: mongodb-org-shell
      state: present   
   - name: loading schema
-    ansible.builtin.command: mongo --host 18.234.29.95 < /app/schema/catalogue.js    
+    ansible.builtin.command: mongo --host 18.234.29.95 < /app/schema/catalogue.js 
+  - name: Start service catalogue and enable
+    ansible.builtin.service:
+     name: catalogue
+     state: started
+     enabled: yes       
 
 
   
