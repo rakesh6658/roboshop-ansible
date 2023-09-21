@@ -37,7 +37,7 @@
      dest: /tmp
      remote_src: yes   
   - name: download npm
-    ansible.builtin.command: npm install 
+    ansible.builtin.shell: npm install 
     args:
      chdir: /app
   - name: Reload catalogue
