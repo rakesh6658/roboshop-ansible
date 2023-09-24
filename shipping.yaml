@@ -31,4 +31,10 @@
     ansible.builtin.unarchive:
      src: /tmp/shipping.zip
      dest: /app
-     remote_src: yes              
+     remote_src: yes    
+  - name: "loop through list"
+    ansible.builtin.command:
+     name: {{ item }}
+    with_items:
+    - mvn clean package
+    - mv target/shipping-1.0.jar shipping.jar            
