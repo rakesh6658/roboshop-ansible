@@ -41,7 +41,21 @@
   - name: Copy user service
     ansible.builtin.copy:
      src: user.service
-     dest: /etc/systemd/system/user.service  
-        
+     dest: /etc/systemd/system/user.service 
+  - name: Reload user
+    ansible.builtin.systemd:
+     daemon_reload: true
+  - name: Copy user service
+    ansible.builtin.copy:
+     src: mongo.repo
+     dest: /etc/yum.repos.d/mongo.repo 
+  - name: load schema
+    ansible.builtin.command: mongo --host 54.89.215.34  < /app/schema/user.js           
+  - name: Start user catalogue and enable
+    ansible.builtin.service:
+     name: user
+     state: started
+     enabled: true       
+      
 
 
