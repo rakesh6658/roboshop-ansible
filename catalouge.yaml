@@ -56,7 +56,7 @@
      name: mongodb-org-shell
      state: present   
   - name: loading schema
-    ansible.builtin.shell: mongo --host 18.207.196.167 < /app/schema/catalogue.js 
+    ansible.builtin.shell: mongo --host 54.89.215.34 < /app/schema/catalogue.js 
   - name: Start service catalogue and enable
     ansible.builtin.service:
      name: catalogue
