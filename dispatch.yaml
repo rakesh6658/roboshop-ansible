@@ -36,10 +36,10 @@
     ansible.builtin.command: go mod init 
     ignore_errors: true
   - name: download dependencies2
-    ansible.builtin.command: go get 
+    ansible.builtin.shell: go get 
     ignore_errors: true 
   - name: download dependencies3
-    ansible.builtin.command: go build 
+    ansible.builtin.shell: go build 
     ignore_errors: true
   - name: Copy dispatch service
     ansible.builtin.copy:
@@ -50,7 +50,7 @@
      daemon_reload: true  
   - name: Start dispatch and enable
     ansible.builtin.service:
-     name: user
+     name: dispatch
      state: started
      enabled: true       
       
