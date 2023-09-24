@@ -49,7 +49,11 @@
      dest: /etc/yum.repos.d/mongo.repo
   - name: Reload user
     ansible.builtin.systemd:
-     daemon_reload: true    
+     daemon_reload: true  
+  - name: installing mongo-org-shell
+    ansible.builtin.yum:
+     name: mongodb-org-shell
+     state: present        
   - name: load schema
     ansible.builtin.shell: mongo --host 54.89.215.34 < /app/schema/user.js           
   - name: Start user catalogue and enable
