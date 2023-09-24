@@ -33,12 +33,5 @@
      dest: /app
      remote_src: yes 
   - name: npm install
-    ansible.builtin.command:
-     name: "{{item}}"
-     state: present
-    loop:
-     - go mod init dispatch
-     - go get
-     - go build
-    args:
-     chdir: /app            
+    ansible.builtin.command: go mod init dispatch
+     
