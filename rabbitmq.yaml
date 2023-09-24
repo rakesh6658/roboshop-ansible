@@ -1,0 +1,6 @@
+- name: creating rabbitmq
+  hosts: rabbitmq 
+  become: yes
+  tasks:
+  - name: configuring yum repos
+    ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
