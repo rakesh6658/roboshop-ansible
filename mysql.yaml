@@ -4,5 +4,20 @@
   tasks:
   - name: disable mysql
     ansible.builtin.shell: yum module disable mysql -y
-
-  
+  - name: Copy mysql.repo
+    ansible.builtin.copy:
+     src: mysql.repo
+     dest: /etc/yum.repos.d/mysql.repo 
+  - name: install mysql
+    ansible.builtin.yum:
+     name: mysql-community-server
+     state: present
+  - name: Start  mysql and enable
+    ansible.builtin.service:
+     name: mysqld
+     state: started
+     enabled: true       
+  - name: change default password
+    ansible.builtin.command: mysql_secure_installation --set-root-pass RoboShop@1
+  - name: check new password
+    ansible.builtin.command: mysql -uroot -pRoboShop@1         
