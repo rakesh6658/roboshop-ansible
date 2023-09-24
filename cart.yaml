@@ -29,9 +29,9 @@
      ansible.builtin.get_url:
       url: https://roboshop-builds.s3.amazonaws.com/cart.zip 
       dest: /tmp
-   - name: extract user
+   - name: extract cart
      ansible.builtin.unarchive:
-      src: /tmp/user.zip
+      src: /tmp/cart.zip
       dest: /app
       remote_src: yes       
    - name: npm install
