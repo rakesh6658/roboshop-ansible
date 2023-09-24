@@ -1,5 +1,6 @@
 - name: creating redis
   hosts: redis
+  become: yes
   tasks:
   - name: installing repo
     ansible.builtin.yum:
