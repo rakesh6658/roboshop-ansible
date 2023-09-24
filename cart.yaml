@@ -10,8 +10,8 @@
       state: present
    - name: checking user
      ansible.builtin.command: id roboshop
-      register: out
-      ignore_errors: true
+     register: out
+     ignore_errors: true
    - name: validating and creating user
      when: out.rc == 1
      ansible.builtin.user:
