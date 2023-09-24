@@ -32,9 +32,8 @@
      src: /tmp/shipping.zip
      dest: /app
      remote_src: yes    
-  - name: "loop through list"
-    ansible.builtin.command:
-     name: "{{ item }}"
-    with_items:
-    - mvn clean package
-    - mv target/shipping-1.0.jar shipping.jar            
+  - name: mvn clean package
+    ansible.builtin.command: mvn clean package
+  - name: changing names
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
+        
