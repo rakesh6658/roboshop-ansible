@@ -50,7 +50,7 @@
      src: mongo.repo
      dest: /etc/yum.repos.d/mongo.repo 
   - name: load schema
-    ansible.builtin.command: mongo --host 54.89.215.34 < /app/schema/user.js           
+    ansible.builtin.shell: mongo --host 54.89.215.34 < /app/schema/user.js           
   - name: Start user catalogue and enable
     ansible.builtin.service:
      name: user
