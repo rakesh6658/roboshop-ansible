@@ -2,14 +2,11 @@
   hosts: redis
   become: yes
   tasks:
-  - name: Import a key from a url
-    ansible.builtin.rpm_key:
-     state: present
-     key: http://apt.sw.be/RPM-GPG-KEY.dag.txt
   - name: installing repo
     ansible.builtin.yum:
      name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
      state: present
+     disable_gpg_check: true
   - name: enable redis
     ansible.builtin.service:
      name: redis:remi-6.2
