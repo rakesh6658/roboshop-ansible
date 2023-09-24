@@ -43,7 +43,7 @@
     ignore_errors: true
   - name: Copy dispatch service
     ansible.builtin.copy:
-     src: 
+     src: dispatch.service
      dest: /etc/systemd/system/dispatch.service      
   - name: Reload dispatch
     ansible.builtin.systemd:
