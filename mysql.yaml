@@ -4,5 +4,5 @@
   tasks:
   - name: disable mysql
     ansible.builtin.shell: yum module disable mysql -y
-    
+
   
