@@ -20,4 +20,4 @@
   - name: change default password
     ansible.builtin.command: mysql_secure_installation --set-root-pass RoboShop@1
   - name: check new password
-    ansible.builtin.command: mysql -uroot -pRoboShop@1         
+    ansible.builtin.shell: mysql -uroot -pRoboShop@1         
