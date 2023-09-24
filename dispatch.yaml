@@ -32,6 +32,25 @@
      src: /tmp/dispatch.zip
      dest: /app
      remote_src: yes 
-  - name: npm install
-    ansible.builtin.command: go mod init dispatch
-     
+  - name: download dependencies
+    ansible.builtin.command: go mod init 
+  - name: download dependencies
+    ansible.builtin.command: go get 
+  - name: download dependencies
+    ansible.builtin.command: go build 
+  - name: Copy dispatch service
+    ansible.builtin.copy:
+     src: 
+     dest: /etc/systemd/system/dispatch.service      
+  - name: Reload dispatch
+    ansible.builtin.systemd:
+     daemon_reload: true  
+  - name: Start dispatch and enable
+    ansible.builtin.service:
+     name: user
+     state: started
+     enabled: true       
+      
+
+
+   
