@@ -16,5 +16,10 @@
     when: out.rc == 1
     ansible.builtin.user:
      name: roboshop  
+  - name: checking app directory
+    ansible.builtin.stat:
+     path: /app
+     register: directory
+        
 
 
