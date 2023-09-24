@@ -29,11 +29,11 @@
     ansible.builtin.get_url:
      url: https://roboshop-builds.s3.amazonaws.com/user.zip
      dest: /tmp
-  - name: extract user.zip
+  - name: extract user
     ansible.builtin.unarchive:
      src: /tmp/user.zip
      dest: /app
-    remote_src: yes       
+     remote_src: yes       
   - name: npm install
     ansible.builtin.command: npm install
     args:
