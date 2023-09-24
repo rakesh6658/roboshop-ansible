@@ -1,0 +1,7 @@
+- name: creating user\
+  hosts: user
+  become: yes
+  tasks:
+  - name: download rpm repo
+    ansible.builtin.command: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+    
