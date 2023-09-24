@@ -8,3 +8,8 @@
     ansible.builtin.yum:
      name: nodejs
      state: present
+  - name: checking user
+    ansible.builtin.command: id roboshop
+    register: out
+       
+
