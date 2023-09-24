@@ -31,8 +31,8 @@
      dest: /tmp
   - name: extract user.zip
     ansible.builtin.unarchive:
-    src: /tmp/user.zip
-    dest: /app
+     src: /tmp/user.zip
+     dest: /app
     remote_src: yes       
   - name: npm install
     ansible.builtin.command: npm install
