@@ -33,7 +33,11 @@
      dest: /app
      remote_src: yes    
   - name: mvn clean package
-    ansible.builtin.shell: mvn clean package
+    ansible.builtin.command: mvn clean package
+    args:
+     chdir: /app
   - name: changing names
-    ansible.builtin.shell: mv target/shipping-1.0.jar shipping.jar
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
+    args:
+     chdir: /app
         
